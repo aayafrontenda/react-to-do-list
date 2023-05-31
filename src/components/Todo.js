@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DeleteIcon from '../icons/delete.svg';
 import EditIcon from '../icons/edit.svg';
 import ExtendIcon from '../icons/extend.svg';
@@ -28,21 +28,6 @@ export default function Todo({ globalEditMode, setGlobalEditMode, editTrigger, s
                 modifiedCopy.push(prevTodo);
         });
         setTodos(modifiedCopy);
-        /*
-        setTodos((prevTodos) => {
-            return prevTodos.map((prevTodo) => {
-                if (prevTodo.id === todo.id) {
-                    return {
-                        ...prevTodo, 
-                        name: name,
-                        description: desc,
-                        deadline: deadline
-                    }
-                }
-                return prevTodo;
-            });
-        })
-        */
     }
 
     const deleteTodo = () => {
@@ -76,46 +61,27 @@ export default function Todo({ globalEditMode, setGlobalEditMode, editTrigger, s
             }
         });
         setTodos(separateCompleted(modifiedCopy));
-
-        /*
-        setTodos((prevTodos) => {
-            setExtended((prevExtended) => {
-                if (prevExtended)
-                    return false;
-            });
-            /*
-            prevTodos.forEach((prevTodo) => {
-                if (prevTodo.id === todo.id) {
-                    return {
-                        ...prevTodo, completed: !todo.completed
-                    }
-                }
-                return prevTodo;
-            });
-        });
-        */
     }
 
     const manageEdit = () => {
-        setEditMode((prevEditMode) => !prevEditMode);
         saveChanges();
-    }
-
-    useEffect(() => {
-        const modifiedCopy = todos.map((prevTodo) => {
-            if (prevTodo.id !== todo.id && editMode) {
+        setEditMode((prevEditMode) =>  {
+            const modifiedCopy = todos.map((prevTodo) => {
+                if (prevTodo.id !== todo.id && !prevEditMode) {
+                    return {
+                        ...prevTodo,
+                        editable: false
+                    }
+                }
                 return {
                     ...prevTodo,
-                    editable: false
+                    editable: true
                 }
-            }
-            return {
-                ...prevTodo,
-                editable: true
-            }
+            });
+            setTodos(modifiedCopy);
+            return !prevEditMode;
         });
-        setTodos(modifiedCopy);
-    }, [editMode, todos])
+    }
 
     return (
         <div className='edit-box'>

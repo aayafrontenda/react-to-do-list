@@ -34,6 +34,9 @@ function App() {
   ]);
 
   function addTodo(name) {
+    if (name === '')
+      return;
+
     setTodos((prevTodos) => separateCompleted([...prevTodos, {
       id: new Date().toString(),
       name: name,
@@ -56,8 +59,8 @@ function App() {
         </button>
         </div>
         {todos.map((todo) => 
-          <div className='to-do'>
-            <Todo todos={todos} todo={todo} setTodos={setTodos} />
+          <div className='to-do' key={todo.id + todo.id}>
+            <Todo key={todo.id} todos={todos} todo={todo} setTodos={setTodos} />
           </div>
         )}
       </div>

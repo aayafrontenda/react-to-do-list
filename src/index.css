@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+  font-size: 20px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App h1 {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.add-to-do {
+  height: 40px;
+  cursor: pointer;
+  margin-left: auto;
+  background-color: white;
+  border: none;
+}
+
+.to-do-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(220, 220, 220, 0.3);
+  width: 70%;
+  gap: 15px;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.1);
+}
+
+.to-do, .add-row {
+  background-color: white;
+  width: 80%;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.add-row {
+  width: 60%;
+}
+
+.first-line, .add-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.first-line .manage-buttons {
+  margin-left: auto;
+}
+
+img {
+  cursor: pointer;
+}
+
+img:hover {
+  background-color: rgba(216, 191, 216, 0.3);
+}
+
+.to-do-container input, .to-do-container textarea {
+  font-size: 20px;
+  padding: 0px 5px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 5px;
+}
+
+.add-row > input {
+  border: none;
+  width: 80%;
+}
+
+.edit-box textarea {
+  width: 95%;
+  margin-bottom: 0;
+}
+
+.completed {
+  color: green;
+}
+
+.edit-box p, .edit-box input, .edit-box textarea {
+  margin: 10px 0px;
+}
+
+.manage-buttons img, .manage-buttons button {
+  margin-right: 15px;
+}
+
+.edit-box p {
+  word-break: break-all;
+}
+
+.flex {
+  flex: 1;
+}
+
+.description, .deadline {
+  font-size: 18px;
+  color: #555;
+}
